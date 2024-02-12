@@ -12,7 +12,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write 
+      id-token: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -25,9 +25,6 @@ jobs:
         pip install setuptools wheel twine
         python -m pip install -e .[signals] -r requirements-dev.txt
 
-    - name: Build packages
+    - name: Publish package
       run: |
         python setup.py sdist bdist_wheel
-
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1
